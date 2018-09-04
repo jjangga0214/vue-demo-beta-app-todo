@@ -27,5 +27,18 @@
 </script>
 
 <style lang="scss">
-
+  body {
+    text-align: center;
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #F6F6F8;
+    input {
+      border-style: groove;
+    }
+    button {
+      border-style: groove;
+    }
+    .shadow {
+      box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.05);
+    }
+  }
 </style>
