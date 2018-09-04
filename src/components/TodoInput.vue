@@ -1,14 +1,9 @@
 <template>
-  <div>
-    <span>{{mark}}</span>
-
-    <div class="input-box shadow">
-      <input type="text" v-model="newTask" v-on:keyup.enter="addTask" placeholder="입력해주세요">
-      <span v-on:click="addTask" class="add add-btn">
-      <i class="fas fa-plus" aria-hidden="true"></i>
-      <i class="add add-label">추가</i>
+  <div class="input-box shadow">
+    <input type="text" v-model="newTask" v-on:keyup.enter="addTask" placeholder="입력해주세요">
+    <span v-on:click="addTask" class="add add-btn">
+      <i class="fas fa-plus add add-label" aria-hidden="true">+</i>
     </span>
-    </div>
   </div>
 </template>
 
@@ -42,26 +37,27 @@
 </script>
 
 <style scoped lang="scss">
-  input:focus {
-    outline: none;
-  }
-
-  $input-box-height: 50px;
+  $height: 50px;
   $border-radius: 5px;
-  $add-width: 3rem; 
+  $add-width: 3rem;
   .input-box {
     background: white;
-    height: $input-box-height;
-    line-height: $input-box-height;
+    height: $height;
+    line-height: $height;
     border-radius: $border-radius;
+    max-width: 894px;
+    margin: 0 auto 0;
     input {
       float: left;
       margin-left: 1rem;
-      line-height: $input-box-height;
+      line-height: $height;
       border-style: none;
       font-size: 1.3rem;
       background-color: transparent;
       width: calc(100% - (#{$add-width} + 2rem));
+      &:focus {
+        outline: none;
+      }
     }
     .add {
       cursor: pointer;
