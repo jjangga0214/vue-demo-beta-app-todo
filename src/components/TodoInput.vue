@@ -2,7 +2,7 @@
   <div class="input-box shadow">
     <input type="text" v-model="newTask" v-on:keyup.enter="addTask" placeholder="입력해주세요">
     <span v-on:click="addTask" class="add add-btn">
-      <i class="fas fa-plus add add-label" aria-hidden="true">+</i>
+      <i class="fas fa-plus add add-label" aria-hidden="true"></i>
     </span>
   </div>
 </template>
