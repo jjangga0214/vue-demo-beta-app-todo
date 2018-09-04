@@ -5,6 +5,7 @@
     -->
     <TodoHeader></TodoHeader>
     <TodoInput></TodoInput>
+    <br>
     <TodoList></TodoList>
     <TodoFooter></TodoFooter>
   </div>

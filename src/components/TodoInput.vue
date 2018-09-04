@@ -1,9 +1,14 @@
 <template>
   <div>
     <span>{{mark}}</span>
-    <br>
-    <input type="text" v-model="newTask" placeholder="입력해주세요">
-    <button v-on:click="addTask">추가</button>
+
+    <div class="input-box shadow">
+      <input type="text" v-model="newTask" v-on:keyup.enter="addTask" placeholder="입력해주세요">
+      <span v-on:click="addTask" class="add add-btn">
+      <i class="fas fa-plus" aria-hidden="true"></i>
+      <i class="add add-label">추가</i>
+    </span>
+    </div>
   </div>
 </template>
 
@@ -37,5 +42,41 @@
 </script>
 
 <style scoped lang="scss">
+  input:focus {
+    outline: none;
+  }
 
+  $input-box-height: 50px;
+  $border-radius: 5px;
+  $add-width: 3rem; 
+  .input-box {
+    background: white;
+    height: $input-box-height;
+    line-height: $input-box-height;
+    border-radius: $border-radius;
+    input {
+      float: left;
+      margin-left: 1rem;
+      line-height: $input-box-height;
+      border-style: none;
+      font-size: 1.3rem;
+      background-color: transparent;
+      width: calc(100% - (#{$add-width} + 2rem));
+    }
+    .add {
+      cursor: pointer;
+      &.add-btn {
+        float: right;
+        background: linear-gradient(to right, #6478FB, #8768FB);
+        display: inline-block;
+        width: $add-width;
+        border-radius: 0 $border-radius $border-radius 0;
+      }
+      &.add-label {
+        color: white;
+        /*vertical-align: middle;*/
+      }
+    }
+
+  }
 </style>
