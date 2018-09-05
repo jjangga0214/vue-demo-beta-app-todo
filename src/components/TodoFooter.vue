@@ -1,22 +1,16 @@
 <template>
-  <div class="btn clear-btn shadow" type="button" v-on:click="clear">Clear All</div>
+  <div class="tasks-clear btn shadow" type="button" v-on:click="$emit('tasks-clear')">Clear All</div>
 </template>
 
 <script>
   export default {
     name: "Footer",
-    methods: {
-      clear() {
-        console.log('clear');
-        localStorage.clear()
-      }
-    }
   }
 </script>
 
 <style scoped lang="scss">
   $height: 50px;
-  * {
+  .btn.tasks-clear {
     color: red;
     color: #E20303;
     background-color: white;

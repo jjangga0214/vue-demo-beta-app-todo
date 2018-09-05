@@ -1,8 +1,8 @@
 <template>
   <div class="input-box shadow">
-    <input type="text" v-model="newTask" v-on:keyup.enter="addTask" placeholder="입력해주세요">
-    <span v-on:click="addTask" class="add btn add-btn" type="button">
-      <i class="fas fa-plus add btn add-label" aria-hidden="true"></i>
+    <input type="text" v-model="newTask" v-on:keyup.enter="createTask" placeholder="입력해주세요">
+    <span v-on:click="createTask" class="task-create btn" type="button">
+      <i class="task-create label fas fa-plus" aria-hidden="true"></i>
     </span>
   </div>
 </template>
@@ -16,11 +16,10 @@
       };
     },
     methods: {
-      addTask() {
-        const key = this.newTask.trim();
-        if (key) {
-          console.log(key + " : " + this.mark);
-          localStorage.setItem(key, this.mark);
+      createTask() {
+        this.newTask = this.newTask.trim();
+        if (this.newTask) {
+          this.$emit('task-create', this.newTask);
         }
         this.clearInput();
       },
@@ -28,11 +27,7 @@
         this.newTask = '';
       },
     },
-    computed: {
-      mark() {
-        return this.newTask + '!';
-      },
-    },
+
   }
 </script>
 
@@ -52,7 +47,7 @@
       border-style: none;
       font-size: 1.3rem;
       background-color: transparent;
-      width: calc(100% - (#{$add-width} + 1rem  + 1rem));
+      width: calc(100% - (#{$add-width} + 1rem + 1rem));
       /*
       100% - (#{$add-width} + 1rem) = add-btn 과 딱 맞는다.
       왜냐하면 100% - margin-left(1rem) 에서 add-btn의 너비인 #{$add-width} 을 뺀 것이기 때문이다.
@@ -62,16 +57,18 @@
         outline: none;
       }
     }
-    .add {
+    .btn {
       cursor: pointer;
-      &.add-btn {
+      &.task-create {
         float: right;
         background: linear-gradient(to right, #6478FB, #8768FB);
         display: inline-block;
         width: $add-width;
         border-radius: 0 $border-radius $border-radius 0;
       }
-      &.add-label {
+    }
+    .label {
+      &.task-create {
         color: white;
         /*vertical-align: middle;*/
       }

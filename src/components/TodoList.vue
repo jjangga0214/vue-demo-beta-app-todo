@@ -1,10 +1,10 @@
 <template>
   <section>
     <ul>
-      <li v-for="(task, index) in tasks" v-bind:key="task.key" class="shadow">
-        <i type="button" class="fas fa-check btn check-btn"></i>
-        {{task.value}}
-        <span type="button" v-on:click="removeTask(task.key, index)" class="btn removal-btn">
+      <li v-for="(task, index) in tasks" class="shadow">
+        <i type="button" class="task-check btn fas fa-check"></i>
+        {{task}}
+        <span type="button" v-on:click="removeTask(task, index)" class="task-remove btn">
           <i class="far fa-trash-alt" aria-hidden="true"></i>
         </span>
       </li>
@@ -15,25 +15,10 @@
 <script>
   export default {
     name: "List",
-    data() {
-      return {
-        tasks: [],
-      };
-    },
-    created() {
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        const el = {
-          key: key,
-          value: localStorage.getItem(key),
-        };
-        this.tasks.push(el);
-      }
-    },
+    props: ['tasks',],
     methods: {
-      removeTask(key, index) {
-        localStorage.removeItem(key);
-        this.tasks.splice(index, 1); //this.tasks = this.tasks.filter(el => el.key != key);
+      removeTask(task, index) {
+        this.$emit('task-delete', {task, index,});
       },
     },
   }
@@ -67,11 +52,11 @@
 
       .btn {
         margin: 0 1rem; /* Single Responsibility Principle */
-        &.check-btn {
+        &.task-check {
           line-height: $height;
           color: #62acde;
         }
-        &.removal-btn {
+        &.task-remove {
           margin-left: auto;
           color: red;
           color: #DE4343;
