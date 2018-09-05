@@ -27,10 +27,15 @@
 </script>
 
 <style lang="scss">
+  $max-width: 894px;
   body {
     text-align: center;
     font-family: 'Source Sans Pro', sans-serif;
     background-color: #F6F6F8;
+    #app{
+      max-width: $max-width;
+      margin: 0 auto 0;
+    }
     input {
       border-style: groove;
     }
@@ -39,6 +44,9 @@
     }
     .shadow {
       box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.05);
+    }
+    .btn, *[type=button] {
+      cursor: pointer;
     }
   }
 </style>
