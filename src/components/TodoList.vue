@@ -14,8 +14,6 @@
 </template>
 
 <script>
-
-
   export default {
     name: "TodoList",
     props: ['tasks',],
