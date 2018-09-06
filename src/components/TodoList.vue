@@ -4,7 +4,7 @@
       <li v-for="(task, index) in tasks" v-bind:key="task" class="shadow">
         <i type="button" class="task-check btn fas fa-check"></i>
         {{task}}
-        <span type="button" v-on:click="removeTask(task, index)" class="task-remove btn">
+        <span type="button" v-on:click="deleteTask(task, index)" class="task-delete btn">
           <i class="far fa-trash-alt" aria-hidden="true"></i>
         </span>
       </li>
@@ -20,7 +20,7 @@
     name: "TodoList",
     props: ['tasks',],
     methods: {
-      removeTask(task, index) {
+      deleteTask(task, index) {
         this.$emit('task-delete', {task, index,});
       },
     },
@@ -77,7 +77,7 @@
           line-height: $height;
           color: #62acde;
         }
-        &.task-remove {
+        &.task-delete {
           margin-left: auto;
           color: red;
           color: #DE4343;
