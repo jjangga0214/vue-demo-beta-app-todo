@@ -1,21 +1,19 @@
 <template>
-  <div>
     <div class="input-box shadow">
       <input type="text" v-model="newTask" v-on:keyup.enter="createTask" placeholder="입력해주세요">
       <span v-on:click="createTask" class="task-create btn" type="button">
       <i class="task-create label fas fa-plus" aria-hidden="true"></i>
     </span>
+      <Modal v-show="warn" v-on:close="warn = false">
+        <h3 slot="header">경고</h3>
+        <div slot="body">할 일을 입력해주세요</div>
+        <div slot="footer">
+          <button class="btn task-create-warn-accept  " v-on:click="warn  = false">
+            OK
+          </button>
+        </div>
+      </Modal>
     </div>
-    <Modal v-show="warn" v-on:close="warn = false">
-      <h3 slot="header">경고</h3>
-      <div slot="body">할 일을 입력해주세요</div>
-      <div slot="footer">
-        <button class="btn task-create-warn-accept modal-default-button" v-on:click="warn  = false">
-          OK
-        </button>
-      </div>
-    </Modal>
-  </div>
 </template>
 
 <script>
@@ -86,8 +84,9 @@
         width: $add-width;
         border-radius: 0 $border-radius $border-radius 0;
       }
-      &.task-create-warn-accept {
-        background-color: white;
+      &.task-create-warn-accept{
+        background-color: transparent;
+        border: none;
       }
     }
     .label {
