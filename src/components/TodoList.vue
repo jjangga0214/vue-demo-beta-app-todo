@@ -1,20 +1,20 @@
 <template>
   <section>
-    <ul>
-      <li v-for="(task, index) in tasks" class="shadow">
+    <transition-group name="task-list" tag="ul">
+      <li v-for="(task, index) in tasks" v-bind:key="task" class="shadow">
         <i type="button" class="task-check btn fas fa-check"></i>
         {{task}}
         <span type="button" v-on:click="removeTask(task, index)" class="task-remove btn">
           <i class="far fa-trash-alt" aria-hidden="true"></i>
         </span>
       </li>
-    </ul>
+    </transition-group>
   </section>
 </template>
 
 <script>
   export default {
-    name: "List",
+    name: "TodoList",
     props: ['tasks',],
     methods: {
       removeTask(task, index) {
@@ -29,6 +29,12 @@
   $height: 50px;
   $border-radius: 5px;
   $gap-bottom: 10px;
+
+  /*.task-list-move {
+    transition: transform 1s;
+  }*/
+
+
 
   ul {
     padding: 0;
@@ -49,6 +55,20 @@
       height: $height;
       line-height: $height;
       border-radius: $border-radius;
+
+      &.task-list-enter-active {
+        transition: all .5s;
+      }
+
+      &.task-list-leave-active {
+        transition: all .3s;
+      }
+
+      &.task-list-enter, &.task-list-leave-to  {
+        //transform: scaleX(0.95);
+        opacity: 0;
+        transform: translateX(10px);
+      }
 
       .btn {
         margin: 0 1rem; /* Single Responsibility Principle */
