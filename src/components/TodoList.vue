@@ -9,10 +9,13 @@
         </span>
       </li>
     </transition-group>
+
   </section>
 </template>
 
 <script>
+
+
   export default {
     name: "TodoList",
     props: ['tasks',],
@@ -33,8 +36,6 @@
   /*.task-list-move {
     transition: transform 1s;
   }*/
-
-
 
   ul {
     padding: 0;
@@ -64,7 +65,7 @@
         transition: all .3s;
       }
 
-      &.task-list-enter, &.task-list-leave-to  {
+      &.task-list-enter, &.task-list-leave-to {
         //transform: scaleX(0.95);
         opacity: 0;
         transform: translateX(10px);
