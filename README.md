@@ -1,5 +1,7 @@
 # vue-demo-beta-app-todo
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jjangga0214/vue-demo-beta-app-todo.svg)](https://greenkeeper.io/)
+
 > A vue demo beta project for todo app
 
 ## Build Setup
